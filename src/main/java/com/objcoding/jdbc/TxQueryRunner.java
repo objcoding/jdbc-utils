@@ -7,6 +7,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
+ * 这个类中的方法，自己来处理连接的问题
+ * 通过JdbcUtils.getConnection()得到连接！有可能是事务连接，也可能是普通的连接！
+ * JdbcUtils.releaseConnection()完成对连接的释放！如果是普通连接，关闭之！
+ * <p>
  * Created by chenghui.zhang on 2018/2/10.
  */
 public class TxQueryRunner extends QueryRunner {

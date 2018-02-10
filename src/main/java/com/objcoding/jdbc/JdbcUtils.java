@@ -1,5 +1,6 @@
 package com.objcoding.jdbc;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +14,10 @@ import java.sql.SQLException;
 public class JdbcUtils {
     private static final Logger logger = LoggerFactory.getLogger(JdbcUtils.class);
 
-    private static DataSource ds;
+    /**
+     * 采用饿汉模式，默认 c3p0-copnfig.xml 文件，所以使用该工具需在 classpath 中添加 c3p0-copnfig.xml 配置文件
+     */
+    private static DataSource ds = new ComboPooledDataSource();
 
     /**
      * 它为null表示没有事务
@@ -27,10 +31,10 @@ public class JdbcUtils {
     public static DataSource getDataSource() {
         return ds;
     }
-
-    private static void setDataSource(DataSource ds) {
-        JdbcUtils.ds = ds;
-    }
+//
+//    private static void setDataSource(DataSource ds) {
+//        JdbcUtils.ds = ds;
+//    }
 
     /**
      * 获取当前线程数据库连接
