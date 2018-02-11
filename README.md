@@ -36,13 +36,19 @@ T query(String sql, ResultSetHandler rsh, Object... params); //可执行查询�
 T query(Connection con, String sql, ResultSetHadler rsh, Object... params); //支持事务。
 ```
 
-- ResultSetHandler 接口
 
-  BeanHandler  (单行) --> 构造器需要一个 Class 类型的参数，用来把一行结果转换成指定类型的 javaBean 对象；
 
-BeanListHandler (多行) --> 构造器也是需要一个 Class 类型的参数，用来把一行结果集转换成一个javabean，那么多行就是转换成 List 对象，一堆 javabean；
+### ResultSetHandler 接口
 
-MapHandler (单行) --> 把一行结果集转换Map对象：
+- BeanHandler  (单行) --> 构造器需要一个 Class 类型的参数，用来把一行结果转换成指定类型的 javaBean 对象；
+
+
+- BeanListHandler (多行) --> 构造器也是需要一个 Class 类型的参数，用来把一行结果集转换成一个javabean，那么多行就是转换成 List 对象，一堆 javabean；
+
+
+
+- MapHandler (单行) --> 把一行结果集转换Map对象：
+
 
 一行记录：
 
@@ -56,4 +62,4 @@ MapHandler (单行) --> 把一行结果集转换Map对象：
 {uid:1001, username:zs, age:99, gender:male}
 ```
 
-MapListHandler (多行) --> 把一行记录转换成一个 Map，多行就是多个 Map，即 List<Map>！ScalarHandler (单行单列) --> 通常用与 select count(*) from user 语句！结果集是单行单列的！它返回一个 Object。
+- MapListHandler (多行) --> 把一行记录转换成一个 Map，多行就是多个 Map，即 List<Map>！ScalarHandler (单行单列) --> 通常用与 select count(*) from user 语句！结果集是单行单列的！它返回一个 Object。
